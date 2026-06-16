@@ -1,0 +1,31 @@
+root: ".."
+runs_dir: "runs"
+device: "mps"
+
+models:
+  stage06: "runs/stage06/weights/best.pt"
+  stage07: "runs/stage07/weights/best.pt"
+  stage08: "runs/stage08/weights/best.pt"
+
+eval_sets:
+  dataset01:
+    data: "prepared/dataset01/data.yaml"
+    split: "val"
+  dataset02:
+    data: "prepared/dataset02/data.yaml"
+    split: "val"
+  dataset03:
+    data: "prepared/dataset03/data.yaml"
+    split: "test"
+  dataset04:
+    data: "prepared/dataset04/data.yaml"
+    split: "test"
+  dataset05:
+    data: "prepared/dataset05/data.yaml"
+    split: "test"
+  dataset06:
+    data: "prepared/dataset06/data.yaml"
+    split: "test"
+  dataset07_merged:
+    data: "prepared/dataset07_merged/data.yaml"
+    split: "val"

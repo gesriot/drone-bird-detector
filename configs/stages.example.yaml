@@ -1,0 +1,65 @@
+# Copy this file to configs/stages.local.yaml and adjust paths as needed.
+
+root: ".."
+initial_weights: "weights/base_small.pt"
+runs_dir: "runs"
+
+common:
+  imgsz: 640
+  batch: 16
+  device: "mps"
+  workers: 8
+  plots: true
+  cache: false
+  exist_ok: true
+
+stages:
+  - id: stage01
+    dataset: dataset01
+    data: "prepared/dataset01/data.yaml"
+    epochs: 30
+    patience: 7
+
+  - id: stage02
+    dataset: dataset02
+    data: "prepared/dataset02/data.yaml"
+    epochs: 30
+    patience: 7
+
+  - id: stage03
+    dataset: dataset03
+    data: "prepared/dataset03/data.yaml"
+    epochs: 100
+    patience: 20
+
+  - id: stage04
+    dataset: dataset04
+    data: "prepared/dataset04/data.yaml"
+    epochs: 100
+    patience: 20
+
+  - id: stage05
+    dataset: dataset05
+    data: "prepared/dataset05/data.yaml"
+    epochs: 60
+    patience: 12
+
+  - id: stage06
+    dataset: dataset06
+    data: "prepared/dataset06/data.yaml"
+    epochs: 50
+    patience: 10
+
+  - id: stage07
+    dataset: dataset07_merged
+    data: "prepared/dataset07_merged/data.yaml"
+    epochs: 20
+    patience: 4
+
+  # Warm-restart continuation. Stage07 reached the epoch limit while still
+  # improving, so this stage starts from stage07 best.pt with a fresh schedule.
+  - id: stage08
+    dataset: dataset07_merged
+    data: "prepared/dataset07_merged/data.yaml"
+    epochs: 30
+    patience: 8

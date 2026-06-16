@@ -1,0 +1,49 @@
+# Copy this file to configs/datasets.local.yaml and fill in local paths.
+# Keep configs/datasets.local.yaml private; it may contain source names,
+# absolute paths, private download locations, or license notes.
+
+class_names:
+  0: bird
+  1: airplane
+
+datasets:
+  dataset01:
+    description: "Restricted-access drone-only dataset"
+    local_root: "/path/to/dataset01"
+    prepared_yaml: "prepared/dataset01/data.yaml"
+    redistribution: "do-not-redistribute"
+
+  dataset02:
+    description: "Public multi-sensor aerial video dataset"
+    local_root: "/path/to/dataset02"
+    prepared_yaml: "prepared/dataset02/data.yaml"
+    redistribution: "prefer-source-link"
+
+  dataset03:
+    description: "Small bird/drone object detection dataset"
+    local_root: "/path/to/dataset03"
+    prepared_yaml: "prepared/dataset03/data.yaml"
+    redistribution: "verify-before-redistribution"
+
+  dataset04:
+    description: "Small bird/drone object detection dataset"
+    local_root: "/path/to/dataset04"
+    prepared_yaml: "prepared/dataset04/data.yaml"
+    redistribution: "verify-before-redistribution"
+
+  dataset05:
+    description: "Medium bird/drone object detection dataset"
+    local_root: "/path/to/dataset05"
+    prepared_yaml: "prepared/dataset05/data.yaml"
+    redistribution: "verify-before-redistribution"
+
+  dataset06:
+    description: "Large bird/drone object detection dataset"
+    local_root: "/path/to/dataset06"
+    prepared_yaml: "prepared/dataset06/data.yaml"
+    redistribution: "verify-before-redistribution"
+
+  dataset07_merged:
+    description: "Merged dataset built from datasets 01-06 plus public train-only expansions"
+    prepared_yaml: "prepared/dataset07_merged/data.yaml"
+    redistribution: "do-not-redistribute"

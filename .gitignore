@@ -1,0 +1,29 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local/private data. Do not publish source datasets or derived image/label trees.
+data/
+datasets/
+incoming/
+prepared/
+runs/
+tmp/
+
+# Model artifacts are staged for GitHub Releases, not normal Git commits.
+*.pt
+*.onnx
+*.engine
+*.torchscript
+release-assets/weights/*.pt
+!release-assets/weights/README.md
+
+# Private source mapping and local path configuration.
+SOURCE_LEDGER.private.md
+configs/datasets.local.yaml
+configs/stages.local.yaml
+
+# Large/raw logs.
+*.log
