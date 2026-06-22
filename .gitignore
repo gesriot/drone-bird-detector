@@ -20,6 +20,11 @@ tmp/
 release-assets/weights/*.pt
 !release-assets/weights/README.md
 
+# Exception: the released final model is published in-repo under model/.
+!model/yolo26s_drone_bird.pt
+!model/yolo26s_drone_bird.onnx
+!model/yolo26s_drone_bird.torchscript
+
 # Private source mapping and local path configuration.
 SOURCE_LEDGER.private.md
 configs/datasets.local.yaml

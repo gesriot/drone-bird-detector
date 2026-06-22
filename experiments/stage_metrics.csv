@@ -6,4 +6,5 @@ stage04,dataset04,100,20,done_json_best_checkpoint,589.9,0.8114,0.4455
 stage05,dataset05,60,12,done_json_best_checkpoint,792.8,0.9373,0.4973
 stage06,dataset06,50,10,done_json_best_checkpoint,1658.3,0.9660,0.6589
 stage07,dataset07_merged,20,4,done_json_best_checkpoint,4107.6,0.7152,0.4907
-stage08,dataset07_merged,30,8,warm_restart_in_progress,,,
+stage08,dataset07_merged,30,8,done_json_best_checkpoint,7175.9,0.7649,0.5295
+stage09,dataset07_merged,30,8,done_json_best_checkpoint,1907.6,0.7564,0.5081

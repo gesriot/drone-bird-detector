@@ -15,6 +15,7 @@ provenance, metrics, and release-ready model artifacts.
 ```text
 configs/                 Example local configuration files
 experiments/             Sanitized metrics from the training chain
+model/                   Released final model (.pt/.onnx/.torchscript) + license
 release-assets/weights/  Local staging area for GitHub Release assets
 scripts/                 Portable preparation, training, evaluation utilities
 DATA_PROVENANCE.md       Public data provenance summary
@@ -31,11 +32,13 @@ The following are intentionally excluded from Git:
 - absolute local path lists
 - raw run directories
 - virtual environments
-- model weights in normal Git history
+- intermediate stage checkpoints in normal Git history
 
-Model weights may be attached to GitHub Releases from
-`release-assets/weights/`. That directory is ignored by Git so large binaries do
-not enter repository history by accident.
+The released final model (`stage08`) is published in-repo under `model/` in
+three formats (`.pt`, `.onnx`, `.torchscript`) with its AGPL-3.0 license. Its
+checkpoint metadata was sanitized with `scripts/sanitize_checkpoint.py` before
+export. Intermediate per-stage weights stay out of Git; stage them in
+`release-assets/weights/` (ignored by Git) and attach to GitHub Releases instead.
 
 ## Reproduce Locally
 

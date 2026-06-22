@@ -26,7 +26,12 @@ balanced bird/drone stages reduce false positives and catastrophic forgetting.
 | `stage05` | `dataset05` | 60 | 12 | Medium bird/drone set |
 | `stage06` | `dataset06` | 50 | 10 | Large balanced bird/drone set |
 | `stage07` | `dataset07_merged` | 20 | 4 | Merged train set with new public data |
-| `stage08` | `dataset07_merged` | 30 | 8 | Warm-restart continuation from `stage07` |
+| `stage08` | `dataset07_merged` | 30 | 8 | Warm-restart continuation from `stage07`; released final checkpoint |
+| `stage09` | `dataset07_merged` | 30 | 8 | Further warm-restart from `stage08`; early-stopped, no improvement |
+
+The released final model is `stage08_best.pt`. The stage 09 warm-restart was an
+additional continuation that early-stopped without improving on stage 08, so it
+is recorded for completeness but not released as the final checkpoint.
 
 ## Stage Metrics
 
@@ -41,7 +46,8 @@ Metrics below are validation metrics for the stage checkpoint unless noted.
 | `stage05` | `done.json` validation of `best.pt` | 792.8 | 0.9373 | 0.4973 |
 | `stage06` | `done.json` validation of `best.pt` | 1658.3 | 0.9660 | 0.6589 |
 | `stage07` | `done.json` validation of `best.pt` | 4107.6 | 0.7152 | 0.4907 |
-| `stage08` | warm-restart in progress | - | - | - |
+| `stage08` | `done.json` validation of `best.pt` | 7175.9 | 0.7649 | 0.5295 |
+| `stage09` | `done.json` validation of `best.pt` | 1907.6 | 0.7564 | 0.5081 |
 
 Detailed per-epoch CSV files are in `experiments/stages/*/results.csv`.
 
@@ -72,9 +78,13 @@ release-assets/weights/stage04_best.pt
 release-assets/weights/stage05_best.pt
 release-assets/weights/stage06_best.pt
 release-assets/weights/stage07_best.pt
+release-assets/weights/stage08_best.pt   # released final model
+release-assets/weights/stage09_best.pt
 ```
 
 The `release-assets/weights` directory is ignored by Git. Attach these files to
 GitHub Releases instead of committing them to repository history.
 
-`stage08_best.pt` should be added after the warm-restart continuation finishes.
+Before publishing any checkpoint, sanitize embedded training metadata (local
+paths and run names) with `scripts/sanitize_checkpoint.py`, then verify with
+`scripts/inspect_checkpoint.py`.
