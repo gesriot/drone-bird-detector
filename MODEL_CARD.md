@@ -51,6 +51,27 @@ Metrics below are validation metrics for the stage checkpoint unless noted.
 
 Detailed per-epoch CSV files are in `experiments/stages/*/results.csv`.
 
+## Cross-Domain Evaluation
+
+Final checkpoints were validated on each domain's held-out validation set
+(mAP50-95). Dataset codes match `DATA_PROVENANCE.md`; the raw table is in
+`experiments/cross_domain_mAP50_95.csv`.
+
+| Eval domain | `stage06` | `stage07` | `stage08` (final) | `stage09` |
+| --- | ---: | ---: | ---: | ---: |
+| `dataset01` | 0.027 | 0.218 | **0.263** | 0.265 |
+| `dataset02` | 0.018 | 0.198 | **0.238** | 0.197 |
+| `dataset03` | 0.019 | 0.253 | **0.295** | 0.291 |
+| `dataset04` | 0.279 | 0.505 | **0.536** | 0.524 |
+| `dataset05` | 0.032 | 0.432 | **0.452** | 0.447 |
+| `dataset06` | 0.660 | 0.648 | **0.672** | 0.659 |
+| `dataset07_merged` (all domains) | 0.204 | 0.491 | **0.529** | 0.508 |
+
+`stage08` is the best checkpoint on 5 of 7 domains and has the highest overall
+cross-domain mAP50-95 (0.529), so it is released as the final model. The
+`stage09` warm-restart did not improve the aggregate and regressed on several
+domains.
+
 ## Intended Use
 
 - Research and prototyping for aerial object detection.
